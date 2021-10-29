@@ -137,8 +137,9 @@ function displayPerson(person) {
 //this function will continue to loop until the user enters something that is not an empty string("") or is considered valid based off the callback function(valid).
 function promptFor(question, valid) {
   let isValid;
+  let response
   do {
-    let response = prompt(question).trim();
+    response = prompt(question).trim();
     isValid = valid(response);
   } while (response === "" || isValid === false);
   return response;
