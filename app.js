@@ -38,22 +38,31 @@ function mainMenu(person, people) {
   }
 
   let displayOption = promptFor(
-    "Found " +
-      person.firstName +
-      " " +
-      person.lastName +
-      " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'",
-    autoValid
-  );
+    "Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch (displayOption) {
     case "info":
-      // TODO: get person's info
+      alert(person[0].firstName + " " + person[0].lastName + 
+      "\nGender: " + 
+      person[0].gender + 
+      "\nDob: " + 
+      person[0].dob + 
+      "\nHeight: " +
+      person[0].height +
+      "\nWeight: " + 
+      person[0].weight +
+      "\nEye Color: " + 
+      person[0].eyeColor +
+      "\nOccupation: " + 
+      person[0].occupation
+      )
       break;
     case "family":
+      alert("Placeholder Text.")
       // TODO: get person's family
       break;
     case "descendants":
+      alert("Placeholder Text.")
       // TODO: get person's descendants
       break;
     case "restart":
@@ -74,23 +83,30 @@ function mainMenu(person, people) {
 //#region
 
 //nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
+//nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
+
+
+
+
+
+
+
+
+
 function searchByName(people) {
   let firstName = promptFor("What is the person's first name?", autoValid);
   let lastName = promptFor("What is the person's last name?", autoValid);
 
   let foundPerson = people.filter(function (potentialMatch) {
-    if (
-      potentialMatch.firstName === firstName &&
-      potentialMatch.lastName === lastName
-    ) {
+    if (potentialMatch.firstName === firstName && potentialMatch.lastName === lastName) {
       return true;
-    } else {
-      return false;
     }
   });
   // TODO: find the person single person object using the name they entered.
   return foundPerson;
 }
+
+
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {}
