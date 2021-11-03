@@ -59,10 +59,9 @@ function mainMenu(person, people) {
       break;
     case "family":
       identifySpouse(person, people)
-      // TODO: get person's family
       break;
     case "descendants":
-      alert("Placeholder Text.")
+      identifyDescendants(person, people)
       // TODO: get person's descendants
       break;
     case "restart":
@@ -86,7 +85,7 @@ function identifySpouse(person, people){
     }
   })
 
-  alert(spouse[0].firstName + " " + spouse[0].lastName + 
+  alert("Current Spouse:\n" + spouse[0].firstName + " " + spouse[0].lastName + 
   "\nGender: " + 
   spouse[0].gender + 
   "\nDob: " + 
@@ -100,6 +99,19 @@ function identifySpouse(person, people){
   "\nOccupation: " + 
   spouse[0].occupation
   )
+}
+
+function identifyDescendants(person, people){
+  let descendants = people.filter(function(descMatch){
+    if (descMatch.parents.includes(person[0].id)){
+      return true;
+    }
+    })
+  function displayDesc(kids){
+    return [kids.firstName,kids.lastName].join("\n");
+  }
+  let displayResult = descendants.map(displayDesc)
+  alert(displayResult);
 }
 
 
