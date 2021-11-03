@@ -30,7 +30,6 @@ function app(people) {
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people) {
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if (!person) {
     alert("Could not find that individual.");
@@ -62,7 +61,6 @@ function mainMenu(person, people) {
       break;
     case "descendants":
       identifyDescendants(person, people)
-      // TODO: get person's descendants
       break;
     case "restart":
       app(people); // restart
@@ -108,7 +106,7 @@ function identifyDescendants(person, people){
     }
     })
   function displayDesc(kids){
-    return [kids.firstName,kids.lastName].join("\n");
+    return [kids.firstName,kids.lastName].join(" ");
   }
   let displayResult = descendants.map(displayDesc)
   alert(displayResult);
