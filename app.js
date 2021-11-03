@@ -58,7 +58,7 @@ function mainMenu(person, people) {
       )
       break;
     case "family":
-      alert("Placeholder Text.")
+      identifySpouse(person, people)
       // TODO: get person's family
       break;
     case "descendants":
@@ -76,6 +76,32 @@ function mainMenu(person, people) {
 }
 
 //#endregion
+// Identify and display relatives functions
+
+function identifySpouse(person, people){
+  let spouseId = person[0].currentSpouse
+  let spouse = people.filter(function (spouseMatch){
+    if (spouseMatch.id === spouseId){
+      return true;
+    }
+  })
+
+  alert(spouse[0].firstName + " " + spouse[0].lastName + 
+  "\nGender: " + 
+  spouse[0].gender + 
+  "\nDob: " + 
+  spouse[0].dob + 
+  "\nHeight: " +
+  spouse[0].height +
+  "\nWeight: " + 
+  spouse[0].weight +
+  "\nEye Color: " + 
+  spouse[0].eyeColor +
+  "\nOccupation: " + 
+  spouse[0].occupation
+  )
+}
+
 
 //Filter functions.
 //Ideally you will have a function for each trait.
@@ -84,14 +110,6 @@ function mainMenu(person, people) {
 
 //nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
 //nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
-
-
-
-
-
-
-
-
 
 function searchByName(people) {
   let firstName = promptFor("What is the person's first name?", autoValid);
