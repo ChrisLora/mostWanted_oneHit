@@ -17,7 +17,7 @@ function app(people) {
       searchResults = searchByName(people);
       break;
     case "no":
-      // TODO: search by traits
+      searchResults = determineTrait(people,searchBy);
       break;
     default:
       app(people); // restart app
@@ -130,16 +130,56 @@ function searchByName(people) {
       return true;
     }
   });
-  // TODO: find the person single person object using the name they entered.
   return foundPerson;
 }
 
+function searchBy(people,promptText){
+  let searchedTrait = prompt(promptText);
+  let foundPeople = people.filter(function (potentialMatch){
+    if (potentialMatch[0].includes(searchedTrait)){
+    return true;
+    }})
+  function displayFoundPeople(foundPeople){
+    return [foundPeople.firstName,foundPeople.lastName].join(" ");
+  }
+  let displayResult = foundPeople.map(displayFoundPeople)
+  alert("Here are the results:\n" + displayResult);
+}
 
 
-//unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
+function determineTrait(people,searchFunction){
+  let trait = prompt("Which trait would you like to search by? Enter the corresponding number.\n (1)Eyecolor\n(2)D.O.B.\n(3)Height\n(4)Gender\n(5)Weight\n(6)Occupation")
+  switch (trait){
+    case "1":
+      searchFunction(people,"Please enter one of the following options:\nblue\nbrown\ngreen")
+      break;
+    case "2":
+      searchFunction(people,"Please enter in the following format:\n1/1/2000\nMonth/Day/Year")
+      break;
+    case "3":
+      searchFunction(people,"Please enter the total number of inches tall the person is.\nNumbers only.\nI.E. 63")
+      break;
+    case "4":
+      searchFunction(people,"Please enter one of the following options:\nMale\nFemale")
+      break;
+    case "5":
+      searchFunction(people,"Please enter the total weight of the person in pounds, numbers only.\nI.E. 155")
+      break;
+    case "6":
+      searchFunction(people,"Please enter one of the following options:\nProgrammer\nAssistant\nLandscaper\nNurse\nStudent\nArchitect\nDoctor\nPolitician")
+      break;
+  }
+}
+
+
 function searchByEyeColor(people) {}
+function searchByGender(people) {}
+function searchByDob(people) {}
+function searchByHeight(people) {}
+function searchByWeight(people) {}
+function searchByOccupation(people) {}
+function searchByTraits(people){}
 
-//TODO: add other trait filter functions here.
 
 //#endregion
 
